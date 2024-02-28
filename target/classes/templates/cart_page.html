@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - Beverage Bliss</title>
+    <link rel="icon" sizes="200x200" href="../static/images/kanpai-logo-icon.png">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/cart_page.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script th:src="@{/javascript/header.js}" defer></script>
+</head>
+<body>
+    <header th:replace="~{/fragments/header.html}"></header>
+    <main>
+        <div class="cart-container">
+            <div class="order-table">
+                <form>
+                    <table class="content-table" id="table_id">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="cartProduct:${cartItems}">
+                            <td th:text="${cartProduct.getProduct().name}"></td>
+                            <td th:text="${cartProduct.getProduct().quantity}"></td>
+                            <td th:text="${cartProduct.getProduct().price}"></td>
+                            <td><a class="delete_button"
+                                   th:href="@{~/cart/remove/}+${cartProduct.id}">Delete</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <script
+                            type="text/javascript"
+                            charset="utf8"
+                            src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"
+                    ></script>
+                    <script
+                            type="text/javascript"
+                            charset="utf8"
+                            src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js">
+                        document.getElementsByClassName()
+                    </script>
+                    <script>
+                        $(function() {
+                            $("#table_id").dataTable();
+                        });
+                    </script>
+
+                    <br><br>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer th:replace="~{/fragments/footer.html}"></footer>
+</body>
+</html>

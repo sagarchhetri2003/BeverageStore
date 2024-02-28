@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>All Orders</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css"/>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/order_list.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/admin_dashboard.css}">
+
+</head>
+<body>
+
+<div class="grid-container">
+
+  <header class="header">
+    <div class="menu-icon" onclick="openSidebar()">
+      <span class="material-icons-outlined">menu</span>
+    </div>
+    <div class="main-title">
+      <h2>Order List</h2>
+    </div>
+
+  </header>
+
+  <aside id="sidebar">
+
+    <div class="sidebar-title">
+      <img th:src="@{/images/admin photo.jpg}" height="40px" width="40px" alt="">
+      <h4 class="profile-text" th:text="${info.getName()}"></h4>
+      <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+    </div>
+
+    <ul class="sidebar-list">
+      <li class="sidebar-list-item">
+        <i class="fa-solid fa-house"></i> <a th:href="@{/admin/dashboard}">Dashboard</a>
+      </li>
+      <li class="sidebar-list-item">
+        <i class="fa-solid fa-list-ul"></i> <a th:href="@{/admin/order-list}">Order List</a>
+      </li>
+      <li class="sidebar-list-item">
+        <i class="fa-solid fa-list-ul"></i> <a th:href="@{/admin/user-list}">User List</a>
+      </li>
+      <li class="sidebar-list-item">
+        <i class="fa-solid fa-list-ul"></i> <a th:href="@{/admin/product-list}">Products List</a>
+      </li>
+      <li class="sidebar-list-item">
+        <i class="fa-solid fa-plus"></i> <a th:href="@{/admin/add-product}">Add Products</a>
+      </li>
+      <li class="sidebar-list-item">
+        <i class="fa-solid fa-plus"></i> <a th:href="@{/admin/add-notices}">Add Notices</a>
+      </li>
+      <li class="sidebar-list-item">
+        <i class="fa-solid fa-list-ul"></i> <a th:href="@{/admin/notice-list}">Notice List</a>
+      </li>
+      <li class="sidebar-list-item">
+        <i class="fa-solid fa-list-ul"></i> <a th:href="@{/admin/queries}">Query Section</a>
+      </li>
+      <li class="sidebar-list-item">
+        <i class="fa-solid fa-gear"></i> <a th:href="@{/admin/settings}">Settings</a>
+      </li>
+      <li class="sidebar-list-item">
+        <i class="fa-solid fa-right-from-bracket"></i> <a th:href="@{/logout}">logout</a>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- Main -->
+  <main class="main-container">
+    <div class="order-table">
+      <form>
+        <table class="content-table" id="table_id">
+          <thead>
+          <tr>
+            <th>User Name</th>
+            <th>Product Id</th>
+            <th>Product Name</th>
+            <th>Product Quantity</th>
+            <th>Product Price</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="item:${cartItems}">
+            <td th:text="${item.getUser().name}"></td>
+            <td th:text="${item.getProduct().id}"></td>
+            <td th:text="${item.getProduct().name}"></td>
+            <td th:text="${item.getProduct().quantity}"></td>
+            <td th:text="${item.getProduct().price}"></td>
+            <td><a class="delete-button" th:href="@{~/admin/removeProduct/}+${item.id}">Delete</a></td>
+          </tr>
+          </tbody>
+        </table>
+        <script
+                type="text/javascript"
+                charset="utf8"
+                src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"
+        ></script>
+        <script
+                type="text/javascript"
+                charset="utf8"
+                src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js">
+          document.getElementsByClassName()
+        </script>
+        <script>
+          $(function() {
+            $("#table_id").dataTable();
+          });
+        </script>
+
+        <br><br>
+      </form>
+    </div>
+  </main>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.5/apexcharts.min.js"></script>
+<script type="text/javascript" th:src="@{/javascript/admin_dashboard.js}"></script>
+</body>
+</html>

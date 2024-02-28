@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/add_product.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/admin_dashboard.css}">
+</head>
+<body>
+
+<div class="grid-container">
+
+    <header class="header">
+        <div class="menu-icon" onclick="openSidebar()">
+            <span class="material-icons-outlined">menu</span>
+        </div>
+        <div class="main-title">
+            <h2>Add Wine</h2>
+        </div>
+
+    </header>
+
+    <aside id="sidebar">
+
+        <div class="sidebar-title">
+            <img th:src="@{/images/man.png}" height="40px" width="40px" alt="">
+            <h4 class="profile-text">Profile</h4>
+            <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+        </div>
+
+        <ul class="sidebar-list">
+            <li class="sidebar-list-item">
+                <a th:href="@{/admin/dashboard}">Dashboard</a>
+            </li>
+            <li class="sidebar-list-item">
+                <a th:href="@{/admin/order-list}">Orders</a>
+            </li>
+<!--            <li class="sidebar-list-item">-->
+<!--                <a th:href="@{/admin/add-product}">Add Products</a>-->
+<!--            </li>-->
+            <li class="sidebar-list-item">
+                <a th:href="@{/admin/add-whiskey}">Add Whiskey</a>
+            </li>
+            <li class="sidebar-list-item">
+                <a th:href="@{/admin/add-vodka}">Add Vodka</a>
+            </li>
+            <li class="sidebar-list-item">
+                <a th:href="@{/admin/add-wine}">Add Wine</a>
+            </li>
+            <li class="sidebar-list-item">
+                <a th:href="@{/admin/add-gin}">Add Gin</a>
+            </li>
+            <li class="sidebar-list-item">
+                <a th:href="@{/admin/add-tequila}">Add Tequila</a>
+            </li>
+            <li class="sidebar-list-item">
+                <a th:href="@{/admin/add-tobacco}">Add Tobacco</a>
+            </li>
+            <li class="sidebar-list-item">
+                <a th:href="@{/admin/notify}">Notify Customers</a>
+            </li>
+            <li class="sidebar-list-item">
+                <a th:href="@{/admin/settings}">Settings</a>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- Main -->
+    <main class="main-container">
+        <form th:method="post" th:action="@{/admin/save/product-wine}" th:object="${product_wine}" enctype="multipart/form-data">
+            <div class="form-fields">
+                <input type="file" name="product_photo" accept="image/*" id="product_photo" class="form-control-file" required>
+                <input type="text" name="product-name" id="product-name" placeholder="Enter the product's name..." required th:field="*{product_name}">
+                <input type="text" name="product-quantity" id="product-quantity" placeholder="Enter the product's quantity..." required th:field="*{product_quantity}">
+                <input type="text" name="product-price" id="product-price" placeholder="Enter the product's price..." required th:field="*{product_price}">
+                <button type="submit">Add product</button>
+            </div>
+        </form>
+    </main>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.5/apexcharts.min.js"></script>
+<script type="text/javascript" th:src="@{/javascript/admin_dashboard.js}"></script>
+</body>
+</html>

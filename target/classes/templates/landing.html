@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beverage Bliss</title>
+    <link rel="icon" sizes="200x200" th:href="@{/images/beverage header.png}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/landing.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script th:src="@{/javascript/header.js}" defer></script>
+</head>
+<body>
+    <header th:replace="~{/fragments/header.html}"></header>
+    <main>
+        <div class="main-img">
+            <h2 style="font-size: 40px;">Welcome to Beverage Bliss</h2>
+            <h3>Here we promise to deliver quality liquor.</h3>
+        </div>
+        <h2 class="title">Find all Products Here</h2>
+        <div id = products-section>
+                <div class="item" th:each="products:${product}">
+                    <img class="item-pic" th:src="'data:image/png;base64,'+${products.imageBase64}"/>
+                    <p th:text="${products.name}"></p>
+                    <div class="info">
+                        <p th:text="${products.price}"></p>
+                        <form class="form-item" th:method="post" th:action="@{/landing/save}" th:object="${product}">
+                        <input type="text"  hidden="hidden" name="product_id" th:value="${products.id}">
+                        <input type="number" hidden="hidden" name="user_id" th:value="${info.id}">
+                            <button class="button-cart" type="submit">Add to cart <i class="fa-solid fa-cart-shopping"></i></button>
+                        </form>
+                    </div>
+                </div>
+
+<!--            width="230" height="227"-->
+<!--            <div class="item">-->
+<!--                <img class="item-pic" src="Vodka.jpg" alt="">-->
+<!--                <p>Vodka</p>-->
+<!--                <div class="info">-->
+<!--                    <p>Rs 8000</p>-->
+<!--                    <button type="submit">Add to cart</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="item">-->
+<!--                <img class="item-pic" src="Vodka.jpg" alt="">-->
+<!--                <p>Vodka</p>-->
+<!--                <div class="info">-->
+<!--                    <p>Rs 8000</p>-->
+<!--                    <button type="submit">Add to cart</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="item">-->
+<!--                <img class="item-pic" src="Vodka.jpg" alt="">-->
+<!--                <p>Vodka</p>-->
+<!--                <div class="info">-->
+<!--                    <p>Rs 8000</p>-->
+<!--                    <button type="submit">Add to cart</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="item">-->
+<!--                <img class="item-pic" src="Vodka.jpg" alt="">-->
+<!--                <p>Vodka</p>-->
+<!--                <div class="info">-->
+<!--                    <p>Rs 8000</p>-->
+<!--                    <button type="submit">Add to cart</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="item">-->
+<!--                <img class="item-pic" src="Vodka.jpg" alt="">-->
+<!--                <p>Vodka</p>-->
+<!--                <div class="info">-->
+<!--                    <p>Rs 8000</p>-->
+<!--                    <button type="submit">Add to cart</button>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+    </main>
+    <footer th:replace="~{/fragments/footer.html}"></footer>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="icon" sizes="200x200" th:href="@{/images/beverage header.png}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}">
+    <script th:src="@{/javascript/login.js}" defer></script>
+    <script th:src="@{/javascript/header.js}" defer></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+<header th:replace="~{/fragments/header.html}"></header>
+<main>
+    <div id="error"></div>
+    <div class="main-container">
+        <div class="container-left">
+            <img alt="" class="container-left-logo" th:src="@{/images/beverage header.png}">
+        </div>
+        <div class="container-right">
+            <form id="login_form" action="#" th:action="@{/login}" method="post">
+                <div class="h2-text">
+                    <h2 class="h2">
+                        Login
+                    </h2>
+                    <h3 class="h3">Welcome! Please enter your details.</h3>
+                </div>
+                <div class="login-fields">
+                    <div class="input-fields">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input class="input" type="email" id="email" name="email" placeholder="Enter your email address...">
+                    </div>
+                    <div class="input-fields">
+                        <i class="fa-solid fa-lock"></i>
+                        <input class="input" type="password" id="password" name="password" placeholder="Enter your password...">
+                    </div>
+                    <button class="login-button" id="button" type="submit">login</button>
+                </div>
+                <div class="for-forgot-password">
+                    <h5>Forgot your password?<a th:href="@{/user/request-password-reset}">Click here...</a></h5>
+                    <h5>Don't have an account?<a th:href="@{/user/create}">Click here...</a></h5>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,33 @@
+form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin-top: 80px;
+    margin-left: 115px;
+    width: 900px;
+    justify-content: flex-start;
+    align-items: center;
+}
+input {
+    height: 40px;
+    width: 350px;
+    margin-top: 10px;
+    border-radius: 6px;
+    font-size: 15px;
+}
+.description {
+    height: 100px;
+    width: 700px;
+    margin-top: 10px;
+    border-radius: 6px;
+    font-size: 15px;
+}
+button {
+    width: 200px;
+    height: 40px;
+    border-radius: 6px;
+    margin-top: 20px;
+    background-color: #000000;
+    color: #FFFFFF;
+    font-size: 18px;
+}

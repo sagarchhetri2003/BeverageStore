@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <link rel="icon" sizes="200x200" th:href="@{/images/beverage header.png}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/register.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}">
+    <script th:src="@{/javascript/register.js}" defer></script>
+    <script th:src="@{/javascript/header.js}" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+<header th:replace="~{/fragments/header.html}"></header>
+<main>
+    <div id="error"></div>
+    <div class="main-container">
+        <div class="container-left">
+            <img class="container-left-logo" th:src="@{/images/beverage header.png}" alt="">
+        </div>
+        <div class="container-right">
+            <form id="register_form" th:method="post" th:action="@{/user/save}" th:object="${user}">
+                <div class="h2-text">
+                    <h2 class="h2">
+                        Registration Form
+                    </h2>
+                </div>
+                <div class="for-fields">
+                    <div class="input-fields">
+                        <i class="fa-solid fa-user"></i>
+                        <input class="input" type="text" id="name" name="name" placeholder="Full Name..." th:field="*{name}" th:value="${user.name}">
+                    </div>
+                    <div class="input-fields">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input class="input" type="email" id="email" name="email" placeholder="Email-address..." th:field="*{email}" th:value="${user.email}">
+                    </div>
+                    <div class="input-fields">
+                        <i class="fa-solid fa-mobile"></i>
+                        <input class="input" type="tel" id="number" name="number" placeholder="Mobile Number..." th:field="*{number}" th:value="${user.number}">
+                    </div>
+                    <div class="input-fields">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <input class="input" type="text" id="address" name="address" placeholder="Address..." th:field="*{address}" th:value="${user.address}">
+                    </div>
+                    <div class="input-fields">
+                        <i class="fa-solid fa-lock"></i>
+                        <input class="input" type="password" id="create-password" name="password" placeholder="Create a password..." th:field="*{password}" th:value="${user.password}">
+                    </div>
+                    <div class="input-fields">
+                        <i class="fa-solid fa-lock"></i>
+                        <input class="input" type="password" id="confirm-password" name="confirm-password" placeholder="Confirm password...">
+                    </div>
+                    <button class="signup-button" id="button" type="submit">Signup</button>
+                </div>
+                <div class="for-login">
+                    <h5>Already have an account?<a th:href="@{/login}">Login here...</a></h5>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+</body>
+</html>

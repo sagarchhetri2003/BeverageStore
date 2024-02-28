@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us</title>
+  <link rel="icon" sizes="200x200" th:href="@{/images/beverage header.png}">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/aboutus.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script th:src="@{/javascript/header.js}" defer></script>
+</head>
+<body>
+<header th:replace="~{/fragments/header.html}"></header>
+<main>
+  <div class="main-div">
+    <h2>About us</h2>
+    <p>Beverage Bliss is an online liquor store developed and designed inorder to made liquor business easy just by using online services. It is developed using Html, css, javascript, bootstrap, springboot. Customers can order their products and simply get delivered in their own location in time. This project is made by single person.</p>
+  </div>
+</main>
+<footer th:replace="~{/fragments/footer.html}"></footer>
+</body>
+</html>
